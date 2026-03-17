@@ -7,12 +7,10 @@
 <title>J K STEEL IND</title>
 
 <link rel="icon" href="favicon.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 body {margin:0;font-family:'Poppins';background:#0f2027;color:white;}
 
 /* NAVBAR */
@@ -130,7 +128,6 @@ text-align:center;padding:20px;
 background:#06142e;font-size:14px;
 }
 .footer i {color:#d4af37;margin:0 5px;}
-
 </style>
 </head>
 
@@ -160,6 +157,12 @@ background:#06142e;font-size:14px;
 
 <!-- PRODUCTS -->
 <div class="section" id="products">
+
+<!-- TOP CATALOG BUTTON -->
+<div style="margin-bottom:20px;">
+<a href="catalog.pdf" download class="catalog-btn">📄 Download Catalogue</a>
+</div>
+
 <div class="section-header">
 <h2>Our Products</h2>
 <a href="catalog.pdf" download class="catalog-btn">📄 Download Catalogue</a>
@@ -198,6 +201,12 @@ Studs<br>Pop Rivet<br>Rivet Nut<br>Dowel Pin<br>Circlip<br>Cotter Pin<br>
 </div></div>
 
 </div>
+
+<!-- BOTTOM CATALOG BUTTON -->
+<div style="margin-top:40px;">
+<a href="catalog.pdf" download class="catalog-btn">📄 Download Catalogue</a>
+</div>
+
 </div>
 
 <!-- INQUIRY -->
@@ -233,7 +242,6 @@ Studs<br>Pop Rivet<br>Rivet Nut<br>Dowel Pin<br>Circlip<br>Cotter Pin<br>
 
 <br><br>
 
-<!-- ✅ UPDATED MAP -->
 <iframe 
 src="https://maps.google.com/maps?q=102%20Narayana%20Dhuru%20Street%20Mumbai%20400003&output=embed" 
 height="250" style="width:100%;border:0;">
@@ -280,6 +288,7 @@ window.addEventListener("scroll",()=>{
 navbar.classList.toggle("scrolled",window.scrollY>50);
 });
 
+// Dynamic rows
 document.addEventListener("keydown",function(e){
 if(e.key==="Enter"){
 let a=document.activeElement;
@@ -292,12 +301,23 @@ a.closest("tbody").appendChild(row);
 }
 });
 
+// Inquiry FIXED
 function sendWhatsApp(){
-let msg="Inquiry:%0aName:"+name.value+"%0aCompany:"+company.value+"%0aCategory:"+category.value+"%0a%0a";
+
+let userName = document.getElementById("name").value;
+let userCompany = document.getElementById("company").value;
+let userCategory = document.getElementById("category").value;
+
+let msg="Inquiry:%0a";
+msg+="Name:"+userName+"%0a";
+msg+="Company:"+userCompany+"%0a";
+msg+="Category:"+userCategory+"%0a%0a";
+
 document.querySelectorAll("#tableBody1 tr").forEach(r=>{
 let m=r.querySelector(".m").value;
 let q=r.querySelector(".q").value;
 let g=r.querySelector(".g").value;
+
 if(m){
 msg+=m;
 if(q) msg+=" | Qty:"+q;
@@ -305,19 +325,33 @@ if(g) msg+=" | Grade:"+g;
 msg+="%0a";
 }
 });
+
 window.open("https://wa.me/919892494015?text="+msg);
 }
 
+// Popup
 let selected="";
 function openForm(p){selected=p;popupForm.style.display="flex";}
 function closeForm(){popupForm.style.display="none";}
 
+// Quote FIXED
 function sendQuote(){
-let msg="Quote:%0aName:"+pname.value+"%0aCompany:"+pcompany.value+"%0aPhone:"+pphone.value+"%0aCategory:"+selected+"%0a%0a";
+
+let pnameVal = document.getElementById("pname").value;
+let pcompanyVal = document.getElementById("pcompany").value;
+let pphoneVal = document.getElementById("pphone").value;
+
+let msg="Quote:%0a";
+msg+="Name:"+pnameVal+"%0a";
+msg+="Company:"+pcompanyVal+"%0a";
+msg+="Phone:"+pphoneVal+"%0a";
+msg+="Category:"+selected+"%0a%0a";
+
 document.querySelectorAll("#tableBody2 tr").forEach(r=>{
 let m=r.querySelector(".m").value;
 let q=r.querySelector(".q").value;
 let g=r.querySelector(".g").value;
+
 if(m){
 msg+=m;
 if(q) msg+=" | Qty:"+q;
@@ -325,6 +359,7 @@ if(g) msg+=" | Grade:"+g;
 msg+="%0a";
 }
 });
+
 window.open("https://wa.me/919892494015?text="+msg);
 }
 
